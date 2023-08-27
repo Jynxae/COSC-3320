@@ -4,7 +4,7 @@ def buildTree(preorder,inorder):
     if not preorder:
         return []
     root_val = preorder[0] #To get the root val
-    root_idx = inorder.index(root_val) #To get the index of the root val from in order
+    root_idx = inorder.index(root_val) #To get the index of the root val from in order, it actuallys finds the index of the number we're looking for
 
     left_subtree = buildTree(preorder[1:1+root_idx], inorder[:root_idx])
 
@@ -15,10 +15,10 @@ def buildTree(preorder,inorder):
 
   
 # Open the input file
-for line in sys.stdin:
+for line in sys.stdin:      #another way of reading in input
     n = int(line)  # Read the number of nodes
     preorder = list(map(int, sys.stdin.readline().split()))  # Read the pre-order traversal
-    inorder = list(map(int, sys.stdin.readline().split()))   # Read the in-order traversal
+    inorder = list(map(int, sys.stdin.readline().split()))   # Read the in-order traversal, split automatically makes it a list
 
     postorder = buildTree(preorder, inorder)
 
