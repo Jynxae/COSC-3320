@@ -5,20 +5,38 @@ using namespace std;
 
 int maxProfit(vector<int>& prices)
     {
-        int maxdiff = 0;
-        for (int x = 0; x < prices.size(); x++) // goes through each day
+        int left = 0; 
+        int right = 1;
+        int maxi = 0;
+        
+        while (right < prices.size())
         {
-            for (int y = x; y < prices.size(); y++) // for each day, it goes through the price
+            if(prices.at(left) < prices.at(right))
             {
-                maxdiff = max(maxdiff, prices.at(y) - prices.at(x));
+                int currMax = prices.at(right) - prices.at(left);
+                maxi = max(maxi, currMax);
             }
+            else{
+                left = right;
+            }
+            right += 1;
         }
-        return maxdiff;
+        return maxi;
+        // int maxdiff = 0;
+        // for (int x = 0; x < prices.size(); x++) // goes through each day
+        // {
+        //     for (int y = x; y < prices.size(); y++) // for each day, it goes through the price
+        //     {
+        //         int currMax = prices.at(y) - prices.at(x);
+        //         maxdiff = max(maxdiff, currMax);
+        //     }
+        // }
+        // return maxdiff;
     }
 
 int main()
 {
-    ifstream fin("input1.txt");
+    ifstream fin("input2.txt");
     int size = 0;
     int num = 0;
     fin >> size;
