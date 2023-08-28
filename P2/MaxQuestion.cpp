@@ -22,18 +22,18 @@ int maxProfit(vector<int>& prices)
 
 int main()
 {
+    ifstream fin("input1.txt");
     int size = 0;
     int num = 0;
     cout << "Reem is here " << endl;
-    cin >> size;
-    cout << size+1 << endl;
-    // cin.ignore();
+    fin >> size;
+    fin.ignore();
     vector<int> input;
-    // for(int x = 0; x < size; x++)
-    // {
-    //     cin >> num;
-    //     input.push_back(num);
-    // }
+    for(int x = 0; x < size; x++)
+    {
+        fin >> num;
+        input.push_back(num);
+    }
 
     return 0;
 }
