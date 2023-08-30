@@ -8,7 +8,7 @@ def chess(chess, cond):
         return
     else:
         half = len(ChessWinsandLosses)//2
-        ChessWinsandLosses.split(half)
+        ChessWinsandLosses = ChessWinsandLosses.split(half)
         chess(ChessWinsandLosses,True)
     
     Lcount = ChessWinsandLosses.count('L')

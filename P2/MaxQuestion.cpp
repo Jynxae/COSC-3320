@@ -22,16 +22,6 @@ int maxProfit(vector<int>& prices)
             right += 1;
         }
         return maxi;
-        // int maxdiff = 0;
-        // for (int x = 0; x < prices.size(); x++) // goes through each day
-        // {
-        //     for (int y = x; y < prices.size(); y++) // for each day, it goes through the price
-        //     {
-        //         int currMax = prices.at(y) - prices.at(x);
-        //         maxdiff = max(maxdiff, currMax);
-        //     }
-        // }
-        // return maxdiff;
     }
 
 int main()
