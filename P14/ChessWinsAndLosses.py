@@ -3,7 +3,7 @@ import sys
 
 def chessFun(chess, cond):
     if len(chess) <= 3:
-        return
+        print("hi")
     else:
         half = len(chess)//2
         chess = chess[half:]  #splice is how we can use it to cute a list in half. split() will make each character its own
@@ -25,16 +25,12 @@ def chessFun(chess, cond):
        return False
 
 
-    #Check to see if there any W in the last 4 games
-    if chess[-4:].count('W'):
+    #Check to see if there werent any W in the last 4 games
+    if chess[-4:].count('W') == 0:
         cond = False
         return False
     
     #If we win all the games, then we keep the game condition true
-    if cond == True:
-        return True
-    else:
-        return False
 
 ChessWinsandLosses = ['W','W','W']
 #ChessWinsandLosses = sys.stdin.readline().split()
