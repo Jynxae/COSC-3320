@@ -1,20 +1,5 @@
 from typing import List
 
-def helper(Visited, subArray):
-    if not subArray:
-        return True
-        
-    num = subArray[0]
-    if num not in Visited:
-        Visited.append(num)
-        nextNum = num + 1
-
-    while nextNum in subArray:
-        subArray.remove(nextNum)
-        return helper(Visited, subArray)
-
-    return False
-
 def Divide(input, posInt):
     Visit = []
     input.sort()
