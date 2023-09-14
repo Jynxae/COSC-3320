@@ -7,25 +7,30 @@ using namespace std;
 
 bool divideArray(vector<int> &input, int k, int index)
 {
-    //check size of input vector, if zero then return
-    if(input.empty())
+    if(input.empty())//if vector is empty then we successfully went through the whole list
     {
         return true;
     }
 
-    int firstIndex = input.at(0);
+    int curr = input.front();   //delete the vector at the beginning one by one
     input.erase(input.begin());
 
-    for (int i = index + 1; i < index + k; i++)
+    for (int i = 0; i < k-1; i++) //we repeat this for each size k is 
     {
-        auto conc = find(input.begin(), input.end(), ++firstIndex);
-        if (conc != input.end())
+        auto next = curr + 1;   //sets for concurrent value
+        auto conc = find(input.begin(), input.end(), next); //looks for concurrent value
+        if (conc != input.end())    //if it finds the concurrent value, then we can delete the current spot and go next
+        {
             input.erase(conc);
+            curr = next;
+        }
         else
-            return false;
+        {
+            return false; //returns false if there is no concurrent value
+        }
     }
 
-    // call the function again and pass whatever is remaining in input vector.
+    //instead of splitting the array, how about we change where we start at the index each time
     return divideArray(input, k, index + k);
 }
 
