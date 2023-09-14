@@ -8,6 +8,9 @@
         "xutility": "cpp",
         "iosfwd": "cpp",
         "iostream": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "xiosbase": "cpp",
+        "xlocale": "cpp",
+        "atomic": "cpp"
     }
 }

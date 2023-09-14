@@ -5,81 +5,53 @@
 #include<sstream>
 using namespace std;
 
-bool divideArray(vector<int> input, int k)
+bool divideArray(vector<int> &input, int k, int index)
 {
     //check size of input vector, if zero then return
-    if(input.size() == 0 )
+    if(input.empty())
     {
-        cout << "true" << endl;
         return true;
     }
 
-    //only grabs k values from the beginning. Avoids having repeat values if necessary
-    vector<int> tempArray;
-    for(int x = 0; x <= k; x++)
-    {
-        if(input.size() - 1 == x)
-        {
-            tempArray.push_back(input.at(x));
-            input.erase(input.begin() + x);
-            break;
-        }
-        if(input.at(x) != input.at(x+1))
-        {
-            tempArray.push_back(input.at(x));
-            input.erase(input.begin() + x);
-            x--;
-        }
-        if(tempArray.size() == k)
-        {
-            break;
-        }
-    }
+    int firstIndex = input.at(0);
+    input.erase(input.begin());
 
-    //if there are any values left in input and tempArray isn't at max size, push the rest of input into tempArray
-    if(tempArray.size() < k && !input.empty())
+    for (int i = index + 1; i < index + k; i++)
     {
-        for(int x = 0; x < input.size(); x++)
-        {
-            tempArray.push_back(input.at(x));
-        }
-        sort(tempArray.begin(), tempArray.end());
-    }
-
-    //Go through tempArray to see if it passes.
-    for(int x = 0; x < tempArray.size(); x++)
-    {
-        if(tempArray.size() - 1 == x)
-        {
-            break;
-        }
-        if(tempArray.at(x) == tempArray.at(x+1))
-        {
-            cout << "false" << endl;
+        auto conc = find(input.begin(), input.end(), ++firstIndex);
+        if (conc != input.end())
+            input.erase(conc);
+        else
             return false;
-        }
     }
 
-    //call the function again and pass whatever is remaining in input vector.
-    divideArray(input, k);
+    // call the function again and pass whatever is remaining in input vector.
+    return divideArray(input, k, index + k);
 }
 
-void divide(vector<int> input, int posInt)
+void divide(vector<int> input, int k)
 {
-    if(input.size() % posInt != 0)
+    if(input.size() % k != 0)
     {
         cout << "false" << endl;
         return;
     }
     sort(input.begin(), input.end());
+    int index = 0;
+    bool res = divideArray(input, k, index);
+    if(res)
+    {
+        cout << "true";
+    }
+    else{
+        cout << "false";
+    }
 
-    divideArray(input, posInt);
-    
 }
 
 int main(){
 
-    ifstream fin("input1.txt");
+    ifstream fin("input3.txt");
     vector<int> in;
     int value;
     int k;
