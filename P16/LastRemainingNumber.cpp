@@ -3,29 +3,24 @@
 #include<fstream>
 using namespace std;
 
-int lastRemaining(int num)
+int lastRemaining(int num, bool switchSides)
 {
     if(num == 1)
     {
         return 1;
     }
 
-    if(num % 2 == 0)
-    {
-        return lastRemaining(num / 2);
-    }
-
-    else
-    {
-        return 2 * lastRemaining(num / 2);
-    }
+    return (num % 2 == 1 || switchSides) ? 2 * lastRemaining(num / 2, !switchSides) : 2 * lastRemaining(num / 2, !switchSides) - 1;
+    //ternary practice
+    // ^here we put in our if statement
+    //                              ? signifies what we will do             : is the options we will do
 }
 
 int main()
 {
     int input;
-    bool onlyOne = false;
+    bool onlyOne = true;
     cin >> input;
-    cout << lastRemaining(input);
+    cout << lastRemaining(input, onlyOne);
     return 0;
 }
