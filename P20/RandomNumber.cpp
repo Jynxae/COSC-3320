@@ -83,17 +83,27 @@ void merge(vector<int> &robArray, vector<int> &rachArray, int left, int mid, int
         rightArrRob[j] = robArray[mid + 1 + j];
         rightArrRach[j] = rachArray[mid + 1 + j];
     }
-    int iRobert = 0, jRobert = 0, iRachel = 0, jRachel = 0, kRob = left, kRach = left;
 
-    if(robArray[iRobert] < leftArrRob.size() && robArray[jRobert] < leftArrRob.size())
+
+    int iRobert = 0, jRobert = 0, iRachel = 0, jRachel = 0;
+    int kRob = left, kRach = left;
+
+
+    if(iRobert < leftArrRob.size() && jRobert < rightArrRob.size())
     {
         robPoints += mergeHelper(leftArrRach, rightArrRob); //to robertPoints
+        iRobert++;
     }
 
-    if(rachArray[iRachel] < leftArrRach.size() && rachArray[jRachel] < leftArrRach.size())
+    if(iRachel < leftArrRach.size() && jRachel < rightArrRach.size())
     {
         rachPoints += mergeHelper(leftArrRob, rightArrRach); //to rachelPoints
+        iRachel++;
     }
+
+    iRobert = 0, jRobert = 0, iRachel = 0, jRachel = 0;
+    kRob = left;
+    kRach = left;
 
     //roberts merge
     while (iRobert < n1 && jRobert < n2) {          //merge sub two arrays
@@ -118,6 +128,10 @@ void merge(vector<int> &robArray, vector<int> &rachArray, int left, int mid, int
         ++jRobert;
         ++kRob;
     }
+
+    iRachel= 0;
+    jRachel = 0;
+    kRach = left;
 
     //rachels merge
     while (iRachel < n1 && jRachel < n2) {          //merge sub two arrays
