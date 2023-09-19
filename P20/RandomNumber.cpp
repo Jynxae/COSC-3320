@@ -6,19 +6,6 @@ using namespace std;
 
 int mergeHelper(vector<int> subArray1, vector<int> subArray2)
 {
-
-/*
-
-// this will be rachel and robert subarrays interchangably 
-    // 3 ints, one to hold an index, one to hold a temp score, one to hold a final score. Start all at 0.
-    while index < size of subArray2
-        while score is less than array1 size AND array2[index] is more than array1[tempScore]
-            increment score by one
-        add tempScore to finalScore
-        increment index
-    return finalScore
-
-*/
     int index = 0;
     int tempScore = 0;
     int finalScore = 0;
@@ -37,33 +24,6 @@ int mergeHelper(vector<int> subArray1, vector<int> subArray2)
 
 void merge(vector<int> &robArray, vector<int> &rachArray, int left, int mid, int right, int &robPoints, int &rachPoints)
 {
-
-/*
-
-// This function is VERY similar to mergeSort, I recommend writing a basic
-    // mergeSort first, then adding the second array.
-
-    find midpoint of left subarray
-    find midpoint of right subarray
-
-    create 4 subArrays (left & subarray for Robert and left & right for rachel)
-
-    copy the data to each subarray (same as usual, just doing it twice, i used 2 separate for loops, one for left subarrays one for rights)
-
-    // This is where knowing normal MergeSort helps in understanding
-    create index values (i, j) for both robert and rachel (total of 4) set these to 0, then make 2 indexes to hold the parameter left (one for rob and one for rachel)
-    
-    if (i_indexRobert < leftSubArraySize And j_indexRobert < rightsubSize) // this could possibly be simplified if second condition is not needed
-        add helper(leftRachelSubarray, rightRobertsubarray) to robertPoints
-    repeat for rachel, make sure you swap the necessary objects/variables
-
-    merge subarrays back into their respective arrays
-    left and right robert will merge back into robertArray and vice versa.
-
-    // the rest of the function is the same as basic mergeSort, with extra operations since thers two arrays,
-    // you get the idea :)
-
-*/
 
     int n1 = mid - left + 1;    //find midpoint of left subarray
     int n2 = right - mid;       //find midpoint of right subarray
@@ -129,10 +89,6 @@ void merge(vector<int> &robArray, vector<int> &rachArray, int left, int mid, int
         ++kRob;
     }
 
-    iRachel= 0;
-    jRachel = 0;
-    kRach = left;
-
     //rachels merge
     while (iRachel < n1 && jRachel < n2) {          //merge sub two arrays
         if (leftArrRach[iRachel] <= rightArrRach[jRachel]) {
@@ -159,7 +115,7 @@ void merge(vector<int> &robArray, vector<int> &rachArray, int left, int mid, int
 
 }
 
-void mergeSort(vector<int> array1, vector<int> array2, int left, int right, int robPoints, int rachPoints)
+void mergeSort(vector<int> &array1, vector<int> &array2, int left, int right, int &robPoints, int &rachPoints)
 {
     if (left < right)
     {
@@ -196,7 +152,6 @@ int main()
     }
 
     mergeSort(robert,rachel,0,robert.size()-1, robPoints, rachPoints);
-
     cout << robPoints << " " << rachPoints;
 
     return 0;
