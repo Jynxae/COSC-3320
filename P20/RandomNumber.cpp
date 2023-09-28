@@ -108,7 +108,7 @@ void merge(vector<int> &robArray, vector<int> &rachArray, int left, int mid, int
     }
 
     while (jRachel < n2) {        // Copy the remaining elements of rightArr[], if any
-        leftArrRach[kRach] = rightArrRach[jRachel];
+        rachArray[kRach] = rightArrRach[jRachel];
         ++jRachel;
         ++kRach;
     }
@@ -121,15 +121,15 @@ void mergeSort(vector<int> &array1, vector<int> &array2, int left, int right, in
     {
         int mid = left + (right - left) / 2;
 
-        mergeSort(array1, array2, left, mid, robPoints, rachPoints);
-        mergeSort(array1, array2, mid + 1, right, robPoints, rachPoints);
+        mergeSort(array1, array2, left, mid, robPoints, rachPoints);    //grab left side of the array
+        mergeSort(array1, array2, mid + 1, right, robPoints, rachPoints); //grab right side of the array
 
         merge(array1, array2, left, mid, right, robPoints, rachPoints);
     }
 }
 int main()
 {
-    ifstream fin("input1.txt");
+    ifstream fin("input3.txt");
     vector<int> robert;
     vector<int> rachel;
     int value;
