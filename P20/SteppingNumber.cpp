@@ -8,14 +8,22 @@ void step(int low, int high)
     {
         cout << high << " ";
     }
-    int reamingNumber = high;
-    int lastDigit = 0;  //grab the last digit
-    while(reamingNumber > 0)
+    else if (high <= 9)
     {
-        lastDigit = reamingNumber % 10;
-        reamingNumber /= 10;
+        cout << high << " ";
+        step(low, high - 1);
     }
-
+    else
+    {
+        int lastDigit = high % 10; // grab the last digit
+        int divDigit = high / 10;
+        if (abs(lastDigit - divDigit) == 1 || abs(divDigit - lastDigit == 1))
+        {
+            // recurse
+            step(low, high - 1);
+            cout<< high << " ";
+        }
+    }
 }
 
 int main(){
