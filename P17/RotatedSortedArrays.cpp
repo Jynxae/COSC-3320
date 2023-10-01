@@ -52,43 +52,25 @@ int findK(vector<int> arr)
 {
     int left = 0;
     int right = arr.size() - 1;
-    auto K = min(arr.begin(), arr.end());
-    // use binary search method again
-    while (left <= right)
+
+    while (left < right)
     {
-        int mid = (left + right) / 2;
-        if (*K == arr[mid])
-        {
-            return mid;
-        }
+        int mid = left + (right - left) / 2;
 
-        // left sorted portion
-        if (arr[left] <= arr[mid])
+        if (arr[mid] > arr[right])
         {
-            if (*K > arr[mid] || *K < arr[left])
-            {
-                left = mid + 1;
-            }
-            else
-            {
-                right = mid - 1;
-            }
+            // The rotation point is in the right half
+            left = mid + 1;
         }
-
-        // right sorted portion
         else
         {
-            if (*K < arr[mid] || *K > arr[right])
-            {
-                right = mid - 1;
-            }
-            else
-            {
-                left = mid + 1;
-            }
+            // The rotation point is in the left half
+            right = mid;
         }
     }
-    return -1;
+
+    // left now points to the rotation point
+    return left;
 }
 
 int main()
@@ -106,8 +88,9 @@ int main()
     }
     fin >> target;
 
-    cout << findK(arr) << endl;
+    cout << findK(arr) << '\n';
     cout << pivotIndex(arr, target);
 
     return 0;
 }
+
