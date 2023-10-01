@@ -16,6 +16,7 @@ void step(int low, int high)
             int lastDigit = high % 10; // grab the last digit
             int divDigit = high / 10;  // everything left side of the digit
             bool stepping = true;
+            
             while (divDigit > 9)
             {
                 if (abs((divDigit % 10) - lastDigit) != 1 || abs(lastDigit - (divDigit % 10)) != 1)
