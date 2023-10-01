@@ -27,9 +27,9 @@ void step(int low, int high)
                 divDigit /= 10;
             }
             if ((abs(lastDigit - divDigit) == 1 || abs(divDigit - lastDigit == 1)) && stepping == true)
-        {
-            cout<< high << " ";
-        }
+            {
+                cout << high << " ";
+            }
         }
     }
     else if (high <= 9)
