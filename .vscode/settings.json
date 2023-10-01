@@ -11,6 +11,9 @@
         "algorithm": "cpp",
         "xiosbase": "cpp",
         "xlocale": "cpp",
-        "atomic": "cpp"
+        "atomic": "cpp",
+        "istream": "cpp",
+        "utility": "cpp",
+        "ios": "cpp"
     }
 }
