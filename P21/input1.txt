@@ -1,0 +1,4 @@
+ABC
+ABC
+CBA
+ABAC
