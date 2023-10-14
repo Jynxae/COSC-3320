@@ -74,7 +74,7 @@ int main(){
     fin >> low;
     fin.ignore();
     fin >> high;
-
+    cout << "i" << endl;
     step(low, high);
     return 0;
 }
